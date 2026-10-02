@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 
 // Easily configure the Gemini model name here
-const MODEL_NAME = 'gemini-3.8-flash';
+const MODEL_NAME = process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite';
 
 // Initialize the Google GenAI SDK (server-side only)
 const ai = new GoogleGenAI({
@@ -49,13 +49,13 @@ export async function POST(req) {
       );
     }
 
-    // Request stream with LOW thinking level to minimize latency
+    // Request stream with Flash Lite configuration
     const responseStream = await ai.models.generateContentStream({
       model: MODEL_NAME,
       contents,
       config: {
         thinkingConfig: {
-          thinkingLevel: ThinkingLevel.LOW,
+          thinkingLevel: ThinkingLevel.MINIMAL,
         },
       },
     });
