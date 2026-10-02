@@ -1,0 +1,6 @@
+{
+  "name": "AI Chatbot",
+  "description": "An extremely minimal AI chatbot powered by Google Gemini and Next.js, ready to deploy to Vercel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
